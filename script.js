@@ -71,6 +71,7 @@ function endGame(draw, winningClass) {
         statusMessage.textContent = 'Empate!';
     } else {
         statusMessage.textContent = `${winningClass.toUpperCase()} Venceu!`;
+        triggerFireworks();
     }
 }
 
@@ -82,7 +83,7 @@ function isDraw() {
 
 function placeMark(cell, currentClass) {
     cell.classList.add(currentClass);
-    cell.textContent = currentClass.toUpperCase();  // Adiciona o texto X ou O na célula
+    cell.innerHTML = `<span class="${currentClass}-symbol">${currentClass.toUpperCase()}</span>`;
 }
 
 function swapTurns() {
@@ -105,4 +106,28 @@ function checkWin(currentClass) {
             return cellElements[index].classList.contains(currentClass);
         });
     });
+}
+
+function triggerFireworks() {
+    const duration = 5 * 1000;
+    const end = Date.now() + duration;
+
+    (function frame() {
+        confetti({
+            particleCount: 3,
+            angle: 60,
+            spread: 55,
+            origin: { x: 0 }
+        });
+        confetti({
+            particleCount: 3,
+            angle: 120,
+            spread: 55,
+            origin: { x: 1 }
+        });
+
+        if (Date.now() < end) {
+            requestAnimationFrame(frame);
+        }
+    }());
 }

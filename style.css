@@ -2,7 +2,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family: "Poetsen One", sans-serif;
 }
 
 body {
@@ -10,20 +10,20 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(to right, #78057E, #A85EA7, #78057E);
+    background: linear-gradient(to right, #2591f0, #4962d1, #653db9);
 }
 
 main {
     text-align: center;
-    border: solid 1px #b8f446;
+    border: solid 1px #2492f0;
     border-radius: 5px;
     padding: 10px;
-    background-color: #b8f446;
+    background-color: #653db9;
 }
 
 h1 {
     margin-bottom: 20px;
-    color: #78057E;
+    color: #2492f0;
 }
 
 .game-board {
@@ -51,13 +51,13 @@ button {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    color: #b8f446;
-    background-color: #78057E;
+    color: #653db9;
+    background-color: #2492f0;
     font-size: 1em;
     cursor: pointer;
 }
 button:active {
-    background-color: #A85EA7;
+    background-color: #4962d1;
 }
 
 .status {
@@ -66,5 +66,13 @@ button:active {
 }
 
 .cell.selected {
-    outline: 2px solid #87b344;
+    outline: 2px solid #4962d1;
+}
+
+.x-symbol {
+    color: #653db9;
+}
+
+.o-symbol {
+    color: #2492f0;
 }

@@ -54,7 +54,7 @@ function handleKeyPress(e) {
         }
         placeMark(selectedCell, currentClass);
         if (checkWin(currentClass)) {
-            endGame(false);
+            endGame(false, currentClass);
         } else if (isDraw()) {
             endGame(true);
         } else {
@@ -66,11 +66,11 @@ function handleKeyPress(e) {
     }
 }
 
-function endGame(draw) {
+function endGame(draw, winningClass) {
     if (draw) {
         statusMessage.textContent = 'Empate!';
     } else {
-        statusMessage.textContent = `${oTurn ? "O" : "X"} Venceu!`;
+        statusMessage.textContent = `${winningClass.toUpperCase()} Venceu!`;
     }
 }
 
@@ -106,4 +106,3 @@ function checkWin(currentClass) {
         });
     });
 }
-

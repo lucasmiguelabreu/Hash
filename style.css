@@ -10,7 +10,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f0f0f0;
+    background: linear-gradient(to right, #78057E, #A85EA7, #78057E);
 }
 
 main {
@@ -32,7 +32,7 @@ h1 {
     width: 100px;
     height: 100px;
     background-color: #fff;
-    border: 2px solid #000;
+    border: 2px solid #b8f446;
     display: flex;
     justify-content: center;
     align-items: center;

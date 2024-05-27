@@ -15,54 +15,35 @@ const board = document.getElementById('gameBoard');
 const restartButton = document.getElementById('restartButton');
 const statusMessage = document.getElementById('statusMessage');
 let oTurn;
-let selectedCell = null;
 
 startGame();
 
 restartButton.addEventListener('click', startGame);
-document.addEventListener('keydown', handleKeyPress);
 
 function startGame() {
     oTurn = false;
     cellElements.forEach(cell => {
         cell.classList.remove(X_CLASS);
         cell.classList.remove(O_CLASS);
-        cell.classList.remove('selected');
         cell.textContent = '';  // Limpa o conteúdo das células
         cell.removeEventListener('click', handleClick);
-        cell.addEventListener('click', handleClick);
+        cell.addEventListener('click', handleClick, { once: true });
     });
     setBoardHoverClass();
     statusMessage.textContent = '';
-    selectedCell = null;
 }
 
 function handleClick(e) {
-    if (selectedCell) {
-        selectedCell.classList.remove('selected');
-    }
-    selectedCell = e.target;
-    selectedCell.classList.add('selected');
-}
-
-function handleKeyPress(e) {
-    if (!selectedCell) return;
-    if (e.key === 'x' || e.key === 'o') {
-        const currentClass = e.key === 'x' ? X_CLASS : O_CLASS;
-        if (selectedCell.classList.contains(X_CLASS) || selectedCell.classList.contains(O_CLASS)) {
-            return;
-        }
-        placeMark(selectedCell, currentClass);
-        if (checkWin(currentClass)) {
-            endGame(false, currentClass);
-        } else if (isDraw()) {
-            endGame(true);
-        } else {
-            swapTurns();
-            setBoardHoverClass();
-        }
-        selectedCell.classList.remove('selected');
-        selectedCell = null;
+    const cell = e.target;
+    const currentClass = oTurn ? O_CLASS : X_CLASS;
+    placeMark(cell, currentClass);
+    if (checkWin(currentClass)) {
+        endGame(false, currentClass);
+    } else if (isDraw()) {
+        endGame(true);
+    } else {
+        swapTurns();
+        setBoardHoverClass();
     }
 }
 
@@ -131,3 +112,4 @@ function triggerFireworks() {
         }
     }());
 }
+

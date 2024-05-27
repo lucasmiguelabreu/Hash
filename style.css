@@ -15,24 +15,30 @@ body {
 
 main {
     text-align: center;
+    border: solid 1px #b8f446;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #b8f446;
 }
 
 h1 {
     margin-bottom: 20px;
+    color: #78057E;
 }
 
 .game-board {
     display: grid;
-    grid-template-columns: repeat(3, 100px);
-    gap: 10px;
+    grid-template-columns: repeat(3, 85px);
+    gap: 5px;
     margin-bottom: 20px;
 }
 
 .cell {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
     background-color: #fff;
-    border: 2px solid #b8f446;
+    border: 2px solid #78057E;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -43,8 +49,15 @@ h1 {
 
 button {
     padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: #b8f446;
+    background-color: #78057E;
     font-size: 1em;
     cursor: pointer;
+}
+button:active {
+    background-color: #A85EA7;
 }
 
 .status {
@@ -53,5 +66,5 @@ button {
 }
 
 .cell.selected {
-    outline: 2px solid #00f;
+    outline: 2px solid #87b344;
 }
